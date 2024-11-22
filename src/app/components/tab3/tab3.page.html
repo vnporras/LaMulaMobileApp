@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Checkout
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    @for (product of productsDto; track product.idProduct) {
+      <ion-row>
+        <ion-col><b>Product</b></ion-col>
+        <ion-col><b>Price</b></ion-col>
+        <ion-col><b>Quantity</b></ion-col>
+      </ion-row>
+    } @empty {
+      <ion-item>
+        <ion-label>No products available.</ion-label>
+      </ion-item>
+    }
+  </ion-grid>
+
+  <ion-text class="ion-text-center" color="danger">
+    <p><b>Total: $12312.12</b></p>
+  </ion-text>
+
+</ion-content>

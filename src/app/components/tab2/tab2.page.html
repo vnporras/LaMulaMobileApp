@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Shop
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Products</ion-label>
+    </ion-list-header>
+
+    @for (product of productsDto; track product.idProduct) {
+      <ion-card>
+        <img alt="{{product.attachmentDto.name}}" src="{{product.attachmentDto.url}}" />
+        <ion-card-header>
+          <ion-card-title>{{product.name}}</ion-card-title>
+          <ion-card-subtitle>{{product?.coffeeTypeDto?.name}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <b>Description:</b> {{product.description}} <br>
+          <b>Package Size:</b> {{product.packageSize}} <br>
+          <b>Price:</b> {{product.unitCost | currency: 'EUR':'symbol':'1.2-2'}} <br>
+        </ion-card-content>
+
+        <ion-button expand="block" (click)="onAddProduct(product)">
+          Add to Order
+        </ion-button>
+      </ion-card>
+    } @empty {
+      <ion-item>
+        <ion-label>No products available.</ion-label>
+      </ion-item>
+    }
+
+  </ion-list>
+
+</ion-content>
